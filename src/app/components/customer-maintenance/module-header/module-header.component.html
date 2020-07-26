@@ -1,0 +1,17 @@
+<div class="content-header">
+ <!--  <div id="titulo" class="titulo title">
+      {{title}}
+  </div> -->
+  <div class="subtitle"> 
+      <div class="btn-new-system" align="right"> 
+      <ng-content select="[additionalButton]"></ng-content>
+      <button 
+      mat-flat-button 
+      (click)="openDialogCreate()"
+      *ngIf="nameButton"
+      >
+          <mat-icon>add</mat-icon>{{nameButton}}
+      </button>
+      </div>
+  </div>
+</div>

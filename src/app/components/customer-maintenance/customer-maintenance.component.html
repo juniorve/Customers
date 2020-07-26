@@ -1,0 +1,54 @@
+<mat-card class="content-global container">
+    <div class="header">
+      Creación de clientes
+    </div>
+    <div class="container">
+      <br>
+      <app-module-header
+      title="Asignación de roles a usuarios"
+      nameButton="Nuevo cliente"
+      [disabledButton]="!form.valid"
+      (openDialog)="openDialogNewCustomer($event)"
+      >
+      </app-module-header>
+      <mat-expansion-panel #filters class="mb-4" [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Filtros
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form
+          [formGroup]="form"
+          (ngSubmit)="findCustomers(filters)"
+        >
+          <div class="row">
+            <mat-form-field class="col-xs-12 col-sm-6 col-xl-3">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="name" matInput  type="text"
+            >
+            </mat-form-field>
+            <mat-form-field class="col-xs-12 col-sm-6 col-xl-3">
+              <mat-label>Apellidos</mat-label>
+              <input formControlName="lastName" matInput  type="text"
+            >
+            </mat-form-field>
+          
+            <div class="col-xs-12 col-sm-6 col-xl-3 content-buttons"> 
+                <button type="button" (click)="cleanForm()" mat-flat-button class="border-black mr-2 fs-14">
+                    <i class="fas fa-eraser mr-2"></i>Limpiar
+                </button>
+                <button [disabled]="!form.valid" type="submit" class="save" mat-flat-button color="primary">
+                <mat-icon>search</mat-icon>Buscar
+                </button>
+            </div>
+          </div>
+        </form>
+      </mat-expansion-panel>
+   
+      <app-customer-list
+      *ngIf="customerList.length>0"
+      [customerList]="customerList"
+      >
+      </app-customer-list>
+    </div> 
+</mat-card>

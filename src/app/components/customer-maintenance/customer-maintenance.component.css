@@ -1,0 +1,63 @@
+.icon-action{
+    cursor: pointer;
+}
+
+ 
+button{
+    border-radius: 20px;
+}
+
+input{
+    background: #fafafa !important;
+}
+
+.save{
+    background: #044583;
+}
+
+
+.content-buttons button{
+    border-radius: 5px !important;
+}
+
+mat-panel-title{
+    font-weight: 600;
+}
+
+.content-card{
+    padding: 30px !important;
+}
+
+.icon-see{
+    height: 70px;
+    width: 70px;
+    font-size: 70px;
+    color: silver;
+} 
+
+.text-not-search{
+    margin-top: 20px;
+    width: 100%;
+    padding: 3% 0;
+    text-align: center;
+}
+
+.text-not-search p{
+    color: gray;
+} 
+  
+.content-global{
+    height: 96vh;
+    /* margin: 2vh 1em 0 1em; */
+    margin-top: 2vh;
+}
+
+.header{
+    background: #404090;
+    padding: 14px;
+    color: white;
+}
+
+mat-card{
+    padding: 0 !important;
+}

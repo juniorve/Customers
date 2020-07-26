@@ -1,0 +1,63 @@
+<div mat-dialog-content class="dialog">
+  <form [formGroup]="form" class="form" (ngSubmit)="newCustomer()">
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-12 title">
+            Nuevo cliente
+          </div>
+
+          <div class="col-sm-12 content-form">
+            <div class="row"> 
+              <mat-form-field class="col-xs-12 col-sm-6 col-xl-4">
+                <mat-label>Nombre *</mat-label>
+                <input formControlName="name" matInput type="text"
+                >
+              </mat-form-field> 
+              <mat-form-field class="col-xs-12 col-sm-6 col-xl-4">
+                <mat-label>Apellidos *</mat-label>
+                <input formControlName="lastName" matInput type="text"
+                >
+              </mat-form-field> 
+              <mat-form-field class="col-xs-12 col-sm-6 col-xl-4">
+                <mat-label>Edad *</mat-label>
+                <input formControlName="age" matInput type="number"
+                >
+              </mat-form-field> 
+              <mat-form-field class="col-xs-12 col-sm-6 col-xl-4">
+                <mat-label>Fecha nacimiento *</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="birthDate">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngFor="let validation of messagesValidations.birthDate">
+                  <mat-error *ngIf="
+                      form.controls['birthDate'].hasError(validation.type) &&
+                      (form.controls['birthDate'].dirty || form.controls['birthDate'].touched)
+                    ">
+                    {{ validation.message }}</mat-error>
+                </mat-error>
+              </mat-form-field>
+            </div>  
+
+            <div class="col-sm-12 content-buttons">
+                <button type="button" class="closeDialog" mat-flat-button (click)="closeDialog()">
+                <mat-icon>close</mat-icon>  Cancelar
+                </button>
+                <button 
+                class="save" 
+                mat-flat-button 
+                color="primary"
+                [disabled]="!form.valid"
+                type="submit"
+                >
+                  <mat-icon>save</mat-icon> Guardar 
+                </button>
+            </div>
+         </div>
+
+      </div>
+    </div>
+  </form>
+  <button mat-flat-button class="dialog-close" (click)="closeDialog()"  mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div> 

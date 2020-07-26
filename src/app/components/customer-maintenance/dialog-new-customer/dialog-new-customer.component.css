@@ -1,0 +1,53 @@
+.content-buttons{
+    text-align: right;
+    margin-top: 8px;
+}
+
+.title{
+    font-weight: 500;
+    color: #2755a6;
+    font-size: 20px;
+}
+ 
+/* ::ng-deep .my-custom-dialog-class {
+    mat-dialog-container {
+      padding: 10px 24px !important;
+    }
+} */
+
+.content-form{
+    margin-top: 8px;;
+}
+
+.form{
+    padding: 10px;
+}
+
+.dialog-close {
+    font-weight: 700;
+    line-height: 22px !important;
+    min-width: 22px !important;
+    padding: 5px !important;
+    position: absolute !important;
+    right: 30px !important;
+    top: 5px !important;
+    background-color: white;
+}
+
+.dialog-close .mat-icon{
+    height: 22px;
+    font-size: 22px;
+    width: 22px;
+    color: #2755a6;
+}
+
+.dialog{
+    position: relative;
+}
+
+.closeDialog{
+    background: white;
+    color: black;
+    border: 1px solid;
+    margin-right: 5px;
+}
