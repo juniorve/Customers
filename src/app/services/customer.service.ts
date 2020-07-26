@@ -1,3 +1,4 @@
+import { Customer } from './../models/customer.model';
 import { Observable } from 'rxjs';
 import { ApiService } from './api.service';
 import { Injectable } from '@angular/core';
@@ -27,9 +28,9 @@ export class CustomerService {
 
     private convertDate(customers: object) {
         // convertimos el objeto devuelto por firebase a un arreglo
-        const customerList = [];
+        const customerList: Customer[] = [];
         Object.keys(customers).forEach(key => {
-            const customer = customers[key];
+            const customer: Customer = customers[key];
             customer.birthDate = moment(new Date(customer.birthDate)).format('DD/MM/YYYY');
             customer.id = key;
             customerList.push(customers[key]);

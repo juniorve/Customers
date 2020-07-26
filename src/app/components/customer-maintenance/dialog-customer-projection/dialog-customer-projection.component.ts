@@ -1,3 +1,4 @@
+import { Customer } from './../../../models/customer.model';
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import * as moment from 'moment';
@@ -13,6 +14,7 @@ import { takeUntil } from 'rxjs/operators';
 export class DialogCustomerProjectionComponent implements OnInit, OnDestroy {
   private onDestroy$: Subject<void> = new Subject<void>();
   deathDate;
+  customer: Customer;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<DialogCustomerProjectionComponent>,
@@ -23,11 +25,6 @@ export class DialogCustomerProjectionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    /* Según el INEI la esperanza de via de la población peruana es de 74 años por lo tanto la
-    proyección de la fecha de fallecimiento del cliente sera sumarle 74 años a su fecha de nacimiento. */
-    const birthDate = new Date(this.data.birthDate);
-    this.deathDate = moment(new Date(birthDate.setFullYear(birthDate.getFullYear() + 74))).format('DD/MM/YYYY');
-    console.log(this.deathDate);
     this.getCustomer();
   }
 
@@ -38,10 +35,18 @@ export class DialogCustomerProjectionComponent implements OnInit, OnDestroy {
 
   getCustomer() {
     this.busyService.busy = this.customerService.getCustomerById(this.data.id)
-    .pipe(takeUntil(this.onDestroy$))
-    .subscribe(response => {
-      console.log(response);
-    });
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(response => {
+        if (response) {
+          this.customer = response;
+          console.log(response);
+          /* Según el INEI la esperanza de via de la población peruana es de 74 años por lo tanto la
+    proyección de la fecha de fallecimiento del cliente sera sumarle 74 años a su fecha de nacimiento. */
+          const birthDate = new Date(this.customer.birthDate);
+          this.deathDate = moment(new Date(birthDate.setFullYear(birthDate.getFullYear() + 74))).format('DD/MM/YYYY');
+          console.log(this.deathDate);
+        }
+      });
   }
 
   closeDialog(status?) {
