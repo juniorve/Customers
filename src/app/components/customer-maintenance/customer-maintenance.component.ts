@@ -12,6 +12,7 @@ import { DialogNewCustomerComponent } from './dialog-new-customer/dialog-new-cus
 export class CustomerMaintenanceComponent implements OnInit {
   form: FormGroup;
   customerList: Customer[] = [];
+  average: string;
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
@@ -63,14 +64,20 @@ export class CustomerMaintenanceComponent implements OnInit {
       }
     ];
 
-    console.log(this.customerList);
-
     if (filters) {
       filters.close();
     }
+
+    this.average = this.calculateAverage(this.customerList);
+  }
+
+  calculateAverage(customerList: Customer[]): string {
+    const sum = customerList.map(value => value.age).reduce((previous, current) => current += previous);
+    return (sum / customerList.length).toFixed(2);
   }
 
   cleanForm() {
-
+    this.customerList = [];
+    this.form.reset();
   }
 }

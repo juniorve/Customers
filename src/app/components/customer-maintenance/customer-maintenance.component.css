@@ -1,10 +1,13 @@
 .icon-action{
     cursor: pointer;
 }
-
  
 button{
     border-radius: 20px;
+}
+
+.content-buttons button{
+    border-radius: 5px !important;
 }
 
 input{
@@ -13,11 +16,6 @@ input{
 
 .save{
     background: #044583;
-}
-
-
-.content-buttons button{
-    border-radius: 5px !important;
 }
 
 mat-panel-title{
@@ -48,7 +46,6 @@ mat-panel-title{
   
 .content-global{
     height: 96vh;
-    /* margin: 2vh 1em 0 1em; */
     margin-top: 2vh;
 }
 
@@ -60,4 +57,20 @@ mat-panel-title{
 
 mat-card{
     padding: 0 !important;
+}
+
+.average{
+    font-size: 14px;
+}
+
+.info-table{
+    color: #013a70;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.info-table mat-icon{
+    position: relative;
+    top: 6px;
 }

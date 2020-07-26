@@ -44,11 +44,18 @@
           </div>
         </form>
       </mat-expansion-panel>
-   
-      <app-customer-list
-      *ngIf="customerList.length>0"
-      [customerList]="customerList"
-      >
-      </app-customer-list>
+      <ng-container *ngIf="customerList.length>0">
+        <p class="average"> <strong>La edad promedio de los clientes es:</strong> {{average}}</p>
+        <div class="info-table">
+          <mat-icon>
+            label_important
+          </mat-icon>
+          Lista de clientes registrados</div>
+        <app-customer-list
+        [customerList]="customerList"
+        >
+        </app-customer-list>
+      </ng-container>
+      
     </div> 
 </mat-card>

@@ -7,7 +7,7 @@ import { Customer } from '../../../models/customer.model';
 })
 export class CustomerListComponent implements OnInit {
   @Input() customerList: Customer[] = [];
-  displayedColumns: string[] = ['name', 'lastName', 'age', 'birthDate'];
+  displayedColumns: string[] = ['name', 'lastName', 'age', 'birthDate', 'actions'];
   dataSource: Customer[];
   constructor() {
     console.log(this.customerList);

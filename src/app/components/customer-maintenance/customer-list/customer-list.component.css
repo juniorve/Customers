@@ -9,7 +9,32 @@ tr{
 
 th{
     font-size: 13px;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     color: rgba(0,0,0,.64) !important;
     background-color: #f7f7f7 !important;
+}
+
+.mat-column-age{
+    flex: 0 0 25% !important;
+    width: 25% !important; 
+}
+
+.mat-column-name{
+    flex: 0 0 25% !important;
+    width: 25% !important; 
+}
+
+.mat-column-lastName{
+    flex: 0 0 25% !important;
+    width: 25% !important; 
+}
+
+.mat-column-actions{
+    flex: 0 0 10% !important;
+    width: 10% !important; 
+}
+
+.mat-column-age{
+    flex: 0 0 15% !important;
+    width: 15% !important; 
 }
