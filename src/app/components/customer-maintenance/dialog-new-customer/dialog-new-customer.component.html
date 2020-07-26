@@ -37,7 +37,7 @@
               </mat-form-field> 
               <mat-form-field class="col-xs-12 col-sm-6">
                 <mat-label>Edad *</mat-label>
-                <input formControlName="age" matInput type="number" max="120">
+                <input formControlName="age" matInput type="number" max="120" min="18">
                 <mat-error *ngFor="let validation of messagesValidations.age">
                   <mat-error *ngIf="
                       form.controls['age'].hasError(validation.type) &&
