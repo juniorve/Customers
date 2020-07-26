@@ -13,6 +13,7 @@ export class CustomerMaintenanceComponent implements OnInit {
   form: FormGroup;
   customerList: Customer[] = [];
   average: string;
+  standardDeviation: string;
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
@@ -68,16 +69,29 @@ export class CustomerMaintenanceComponent implements OnInit {
       filters.close();
     }
 
-    this.average = this.calculateAverage(this.customerList);
+    this.customersCalculations();
   }
 
-  calculateAverage(customerList: Customer[]): string {
-    const sum = customerList.map(value => value.age).reduce((previous, current) => current += previous);
-    return (sum / customerList.length).toFixed(2);
+  customersCalculations() {
+    const ageList = this.customerList.map(value => value.age);
+    this.average = this.calculateAverage(ageList).toFixed(2);
+    this.standardDeviation = this.calculateStandardDeviation(ageList).toFixed(2);
+  }
+
+  calculateAverage(ageList): number {
+    const sum = ageList.reduce((previous, current) => current += previous);
+    return (sum / ageList.length);
+  }
+
+  calculateStandardDeviation(ageList): number {
+    const length = ageList.length;
+    const mean = this.calculateAverage(ageList);
+    return Math.sqrt(ageList.map(x => Math.pow(x - mean, 2)).reduce((previous, current) => previous + current) / length);
   }
 
   cleanForm() {
     this.customerList = [];
     this.form.reset();
   }
+
 }
