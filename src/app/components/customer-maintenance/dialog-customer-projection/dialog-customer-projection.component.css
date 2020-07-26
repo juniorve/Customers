@@ -35,6 +35,10 @@
     width: 100%;
 }
 
+.global-content label{
+    font-weight: 600;
+}
+
 .dialog{
     position: relative;
 }

@@ -2,7 +2,6 @@ import { DialogRemoveCustomerComponent } from './dialog-remove-customer/dialog-r
 import { DialogCustomerProjectionComponent } from './dialog-customer-projection/dialog-customer-projection.component';
 import { Customer } from './../../models/customer.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { DialogNewCustomerComponent } from './dialog-new-customer/dialog-new-customer.component';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -16,24 +15,19 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./customer-maintenance.component.css']
 })
 export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
-  form: FormGroup;
   customerList: Customer[] = [];
   average: string;
   standardDeviation: string;
   private onDestroy$: Subject<void> = new Subject<void>();
   constructor(
-    private fb: FormBuilder,
     private dialog: MatDialog,
     private customerService: CustomerService,
     private busyService: BusyService
   ) {
-    this.form = this.fb.group({
-      name: [null],
-      lastName: [null]
-    });
   }
 
   ngOnInit() {
+    this.findCustomers();
   }
 
   ngOnDestroy(): void {
@@ -87,11 +81,6 @@ export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
     return Math.sqrt(ageList.map(x => Math.pow(x - mean, 2)).reduce((previous, current) => previous + current) / length);
   }
 
-  cleanForm() {
-    this.customerList = [];
-    this.form.reset();
-  }
-
   actionIcon(event) {
     console.log(event);
     switch (event.action) {
@@ -110,7 +99,7 @@ export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
   opendDialogShowCustomer(customer: Customer) {
     this.dialog.open(DialogCustomerProjectionComponent, {
       data: customer,
-      width: '50%',
+      width: '40%',
       disableClose: true
     });
   }
@@ -128,5 +117,4 @@ export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
       }
     });
   }
-
 }

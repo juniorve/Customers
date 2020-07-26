@@ -35,7 +35,7 @@ export class DialogRemoveCustomerComponent implements OnInit, OnDestroy {
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(response => {
         console.log(response);
-        swal('Cliente eliminado', 'El cliente fue eliminado exitosamente', 'success').then(value=>{
+        swal('Cliente eliminado', 'El cliente fue eliminado exitosamente', 'success').then(value => {
           this.closeDialog(true);
         });
       });

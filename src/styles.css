@@ -4,11 +4,12 @@
 body{
     background: #f8f9fa !important;
 }
-header{
-    margin-bottom: -100px !important; 
-}
 
-/* ESTILOS PARA LA TABLA  */
+.mat-datepicker-content .mat-calendar
+{ 
+     zoom: 0.85 !important;
+}
+ 
 .mat-dialog-container{
     padding: 0 !important;
     overflow-y: auto !important;
