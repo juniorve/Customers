@@ -12,7 +12,6 @@ import { ApiService } from './services/api.service';
 import { HttpTokenInterceptor } from './interceptors/http-token.interceptor';
 import { CustomerMaintenanceComponent } from './components/customer-maintenance/customer-maintenance.component';
 import { appRoutingProviders, routingModule } from './app.routing';
-import { ModuleHeaderComponent } from './components/customer-maintenance/module-header/module-header.component';
 import { DialogNewCustomerComponent } from './components/customer-maintenance/dialog-new-customer/dialog-new-customer.component';
 import { CustomerListComponent } from './components/customer-maintenance/customer-list/customer-list.component';
 import { DialogCustomerProjectionComponent } from './components/customer-maintenance/dialog-customer-projection/dialog-customer-projection.component';
@@ -21,7 +20,6 @@ import { CustomerService } from './services/customer.service';
   declarations: [
     AppComponent,
     CustomerMaintenanceComponent,
-    ModuleHeaderComponent,
     DialogNewCustomerComponent,
     CustomerListComponent,
     DialogCustomerProjectionComponent,

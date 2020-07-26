@@ -55,36 +55,18 @@ export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
 
   findCustomers(filters?) {
     this.customerList = [];
-    this.customerList = [
-      {
-        name: 'Carlos',
-        lastName: 'Mendoza lopez',
-        age: 31,
-        birthDate: '02/24/1993'
-      },
-      {
-        name: 'María',
-        lastName: 'Silva Mendez',
-        age: 30,
-        birthDate: '12/01/1994'
-      },
-      {
-        name: 'Ana',
-        lastName: 'Del Campo Silva',
-        age: 28,
-        birthDate: '02/24/1993'
-      }
-    ];
 
-    if (filters) {
-      filters.close();
-    }
     this.busyService.busy = this.customerService.getCustomers()
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(response => {
-        console.log(response);
+        if (response.length && response.length > 0) {
+          this.customerList = response;
+          if (filters) {
+            filters.close();
+          }
+          this.customersCalculations();
+        }
       });
-    this.customersCalculations();
   }
 
   customersCalculations() {
