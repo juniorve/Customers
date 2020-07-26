@@ -22,7 +22,7 @@ export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
   constructor(
     private dialog: MatDialog,
     private customerService: CustomerService,
-    private busyService: BusyService
+    public busyService: BusyService
   ) {
   }
 

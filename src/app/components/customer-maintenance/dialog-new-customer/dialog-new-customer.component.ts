@@ -22,7 +22,7 @@ export class DialogNewCustomerComponent implements OnInit, OnDestroy {
     public dialogRef: MatDialogRef<DialogNewCustomerComponent>,
     private fb: FormBuilder,
     private customerService: CustomerService,
-    private busyService: BusyService
+    public busyService: BusyService
   ) {
     this.form = this.fb.group({
       name: [null, Validators.required],
