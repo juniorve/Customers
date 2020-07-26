@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  sessionAuth: 'appark-auth'
+  sessionAuth: 'customer-auth',
+  apiCustomer: 'https://api-customer-fda2d.firebaseio.com'
 };
 
 /*

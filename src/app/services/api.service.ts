@@ -4,17 +4,19 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import * as _swal from 'sweetalert';
 import { SweetAlert } from 'sweetalert/typings/core';
+import { environment } from 'src/environments/environment';
 const swal: SweetAlert = _swal as any;
 
 @Injectable()
 export class ApiService {
+  customer = `${environment.apiCustomer}`;
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
   public formatErrors(error: HttpErrorResponse) {
-    let messageError = error.error ? error.error : error;
-    // this.snackbarService.show(messageError, 'error');
+    const messageError = error.error ? error.error : error;
     swal('Error', messageError, 'error');
     return throwError(messageError);
   }
@@ -35,43 +37,12 @@ export class ApiService {
     );
   }
 
-  patch(path: string, body: Object = {}): Observable<any> {
-    return this.http.patch(path, JSON.stringify(body)).pipe(
-      catchError(error => {
-        return this.formatErrors(error);
-      })
-    );
-  }
-
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(path, JSON.stringify(body)).pipe(
       catchError(error => {
         return this.formatErrors(error);
       })
     );
-  }
-
-  postHTML(path: string, body: Object = {}): Observable<any> {
-    return this.http
-      .put(path, JSON.stringify(body), {
-        responseType: 'text'
-      })
-      .pipe(
-        catchError(error => {
-          return this.formatErrors(error);
-        })
-      );
-  }
-  getHTML(path: string): Observable<any> {
-    return this.http
-      .get(path, {
-        responseType: 'text'
-      })
-      .pipe(
-        catchError(error => {
-          return this.formatErrors(error);
-        })
-      );
   }
 
   delete(path: string): Observable<any> {

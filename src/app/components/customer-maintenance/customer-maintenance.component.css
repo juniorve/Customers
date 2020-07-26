@@ -40,13 +40,19 @@ mat-panel-title{
     text-align: center;
 }
 
+.newCustomer{
+    background: #0ba5b3;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
 .text-not-search p{
     color: gray;
 } 
   
 .content-global{
-  /*   height: 96vh;
-    margin-top: 2vh; */
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -76,3 +82,4 @@ mat-card{
     position: relative;
     top: 6px;
 }
+

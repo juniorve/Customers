@@ -1,16 +1,21 @@
+<div [ngBusy]="{busy: busyService.busy, message: 'Cargando clientes...', backdrop: true}"></div>
 <mat-card class="content-global container">
     <h5 class="header">
       Información de clientes
     </h5>
     <div class="container">
-      <br>
-      <app-module-header
+     <!--  <app-module-header
       title="Asignación de roles a usuarios"
       nameButton="Nuevo cliente"
       [disabledButton]="!form.valid"
       (openDialog)="openDialogNewCustomer($event)"
       >
-      </app-module-header>
+      </app-module-header> -->
+      <div align="right"> 
+        <button mat-flat-button (click)="openDialogNewCustomer()" class="newCustomer">
+            <mat-icon>person_add</mat-icon> Nuevo cliente
+        </button>
+      </div>
       <mat-expansion-panel #filters class="mb-4" [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>

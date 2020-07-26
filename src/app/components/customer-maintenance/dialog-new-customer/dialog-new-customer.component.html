@@ -1,3 +1,4 @@
+<div [ngBusy]="{busy: busyService.busy, message: 'Registrando cliente...', backdrop: true}"></div>
 <div mat-dialog-content class="dialog">
   <form [formGroup]="form" class="form" (ngSubmit)="newCustomer()">
     <div class="container">
@@ -12,28 +13,52 @@
                 <mat-label>Nombre *</mat-label>
                 <input formControlName="name" matInput type="text"
                 >
+                <mat-error *ngFor="let validation of messagesValidations.name">
+                  <mat-error *ngIf="
+                      form.controls['name'].hasError(validation.type) &&
+                      (form.controls['name'].dirty || form.controls['name'].touched)
+                    ">
+                    {{ validation.message }}
+                  </mat-error>
+                </mat-error>  
               </mat-form-field> 
               <mat-form-field class="col-xs-12 col-sm-6">
                 <mat-label>Apellidos *</mat-label>
                 <input formControlName="lastName" matInput type="text"
                 >
+                <mat-error *ngFor="let validation of messagesValidations.lastName">
+                  <mat-error *ngIf="
+                      form.controls['lastName'].hasError(validation.type) &&
+                      (form.controls['lastName'].dirty || form.controls['lastName'].touched)
+                    ">
+                    {{ validation.message }}
+                  </mat-error>
+                </mat-error>  
               </mat-form-field> 
               <mat-form-field class="col-xs-12 col-sm-6">
                 <mat-label>Edad *</mat-label>
-                <input formControlName="age" matInput type="number"
-                >
+                <input formControlName="age" matInput type="number" max="120">
+                <mat-error *ngFor="let validation of messagesValidations.age">
+                  <mat-error *ngIf="
+                      form.controls['age'].hasError(validation.type) &&
+                      (form.controls['age'].dirty || form.controls['age'].touched)
+                    ">
+                    {{ validation.message }}
+                  </mat-error>
+                </mat-error>  
               </mat-form-field> 
               <mat-form-field class="col-xs-12 col-sm-6">
                 <mat-label>Fecha nacimiento *</mat-label>
                 <input matInput [matDatepicker]="picker" formControlName="birthDate">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
+                <mat-datepicker #picker disabled="false"></mat-datepicker>
                 <mat-error *ngFor="let validation of messagesValidations.birthDate">
                   <mat-error *ngIf="
                       form.controls['birthDate'].hasError(validation.type) &&
                       (form.controls['birthDate'].dirty || form.controls['birthDate'].touched)
                     ">
-                    {{ validation.message }}</mat-error>
+                    {{ validation.message }}
+                  </mat-error>
                 </mat-error>
               </mat-form-field>
             </div>  

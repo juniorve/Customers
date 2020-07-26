@@ -16,6 +16,7 @@ import { ModuleHeaderComponent } from './components/customer-maintenance/module-
 import { DialogNewCustomerComponent } from './components/customer-maintenance/dialog-new-customer/dialog-new-customer.component';
 import { CustomerListComponent } from './components/customer-maintenance/customer-list/customer-list.component';
 import { DialogCustomerProjectionComponent } from './components/customer-maintenance/dialog-customer-projection/dialog-customer-projection.component';
+import { CustomerService } from './services/customer.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { DialogCustomerProjectionComponent } from './components/customer-mainten
   ],
   providers: [appRoutingProviders,
     ApiService,
+    CustomerService,
     { provide: MAT_DATE_LOCALE, useValue: 'es-Es' },
     { provide: HTTP_INTERCEPTORS, useClass: HttpTokenInterceptor, multi: true }
   ],

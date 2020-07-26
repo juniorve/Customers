@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "apparkclient"
+    "default": "apparkclient",
+    "customers-app": "customers-app-ea5de"
   }
 }

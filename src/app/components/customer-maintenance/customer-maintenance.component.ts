@@ -1,23 +1,30 @@
 import { DialogCustomerProjectionComponent } from './dialog-customer-projection/dialog-customer-projection.component';
 import { Customer } from './../../models/customer.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { DialogNewCustomerComponent } from './dialog-new-customer/dialog-new-customer.component';
+import { CustomerService } from 'src/app/services/customer.service';
+import { BusyService } from 'src/app/services/busy.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-maintenance',
   templateUrl: './customer-maintenance.component.html',
   styleUrls: ['./customer-maintenance.component.css']
 })
-export class CustomerMaintenanceComponent implements OnInit {
+export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
   form: FormGroup;
   customerList: Customer[] = [];
   average: string;
   standardDeviation: string;
+  private onDestroy$: Subject<void> = new Subject<void>();
   constructor(
     private fb: FormBuilder,
     private dialog: MatDialog,
+    private customerService: CustomerService,
+    private busyService: BusyService
   ) {
     this.form = this.fb.group({
       name: [null],
@@ -28,12 +35,15 @@ export class CustomerMaintenanceComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDialogNewCustomer(event) {
-    console.log(event);
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
+  }
+
+  openDialogNewCustomer() {
     const dialogRef = this.dialog.open(DialogNewCustomerComponent, {
       width: '50%',
-      disableClose: true,
-      data: {}
+      disableClose: true
     });
 
     dialogRef.afterClosed().subscribe(value => {
@@ -69,7 +79,11 @@ export class CustomerMaintenanceComponent implements OnInit {
     if (filters) {
       filters.close();
     }
-
+    this.busyService.busy = this.customerService.getCustomers()
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(response => {
+        console.log(response);
+      });
     this.customersCalculations();
   }
 
