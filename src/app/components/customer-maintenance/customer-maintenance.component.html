@@ -54,6 +54,7 @@
           Lista de clientes registrados</div>
         <app-customer-list
         [customerList]="customerList"
+        (actionIcon)="actionIcon($event)"
         >
         </app-customer-list>
       </ng-container>

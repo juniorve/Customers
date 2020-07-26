@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Customer } from '../../../models/customer.model';
 @Component({
   selector: 'app-customer-list',
@@ -7,6 +7,7 @@ import { Customer } from '../../../models/customer.model';
 })
 export class CustomerListComponent implements OnInit {
   @Input() customerList: Customer[] = [];
+  @Output() actionIcon = new EventEmitter<string>();
   displayedColumns: string[] = ['name', 'lastName', 'age', 'birthDate', 'actions'];
   dataSource: Customer[];
   constructor() {
@@ -15,6 +16,10 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit() {
     this.dataSource = this.customerList;
+  }
+
+  showCustomer(element) {
+    this.actionIcon.emit(element);
   }
 
 }

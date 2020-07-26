@@ -1,0 +1,40 @@
+.title{
+    font-weight: 700;
+    color: #2755a6;
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.dialog-close {
+    font-weight: 700;
+    line-height: 22px !important;
+    min-width: 22px !important;
+    padding: 5px !important;
+    position: absolute !important;
+    right: 30px !important;
+    top: 5px !important;
+    background-color: white;
+}
+
+.dialog-close .mat-icon{
+    height: 22px;
+    font-size: 22px;
+    width: 22px;
+    color: #2755a6;
+}
+
+.title{
+    padding: 0;
+}
+
+.global-content{
+    padding: 20px;
+}
+
+.global-content p {
+    width: 100%;
+}
+
+.dialog{
+    position: relative;
+}

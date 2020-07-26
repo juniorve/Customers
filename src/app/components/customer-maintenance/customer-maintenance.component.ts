@@ -1,3 +1,4 @@
+import { DialogCustomerProjectionComponent } from './dialog-customer-projection/dialog-customer-projection.component';
 import { Customer } from './../../models/customer.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -30,7 +31,7 @@ export class CustomerMaintenanceComponent implements OnInit {
   openDialogNewCustomer(event) {
     console.log(event);
     const dialogRef = this.dialog.open(DialogNewCustomerComponent, {
-      width: '60%',
+      width: '50%',
       disableClose: true,
       data: {}
     });
@@ -49,7 +50,7 @@ export class CustomerMaintenanceComponent implements OnInit {
         name: 'Carlos',
         lastName: 'Mendoza lopez',
         age: 31,
-        birthDate: '24/02/1993'
+        birthDate: '02/24/1993'
       },
       {
         name: 'María',
@@ -61,7 +62,7 @@ export class CustomerMaintenanceComponent implements OnInit {
         name: 'Ana',
         lastName: 'Del Campo Silva',
         age: 28,
-        birthDate: '24/02/1993'
+        birthDate: '02/24/1993'
       }
     ];
 
@@ -92,6 +93,17 @@ export class CustomerMaintenanceComponent implements OnInit {
   cleanForm() {
     this.customerList = [];
     this.form.reset();
+  }
+
+  actionIcon(event) {
+    console.log(event);
+    if (event) {
+      this.dialog.open(DialogCustomerProjectionComponent, {
+        data: event,
+        width: '50%',
+        disableClose: true
+      });
+    }
   }
 
 }

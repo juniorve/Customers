@@ -15,6 +15,7 @@ import { appRoutingProviders, routingModule } from './app.routing';
 import { ModuleHeaderComponent } from './components/customer-maintenance/module-header/module-header.component';
 import { DialogNewCustomerComponent } from './components/customer-maintenance/dialog-new-customer/dialog-new-customer.component';
 import { CustomerListComponent } from './components/customer-maintenance/customer-list/customer-list.component';
+import { DialogCustomerProjectionComponent } from './components/customer-maintenance/dialog-customer-projection/dialog-customer-projection.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { CustomerListComponent } from './components/customer-maintenance/custome
     ModuleHeaderComponent,
     DialogNewCustomerComponent,
     CustomerListComponent,
+    DialogCustomerProjectionComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -35,7 +37,8 @@ import { CustomerListComponent } from './components/customer-maintenance/custome
     NgBusyModule,
   ],
   entryComponents: [
-    DialogNewCustomerComponent
+    DialogNewCustomerComponent,
+    DialogCustomerProjectionComponent
   ],
   providers: [appRoutingProviders,
     ApiService,
