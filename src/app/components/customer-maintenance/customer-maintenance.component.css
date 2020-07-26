@@ -45,8 +45,10 @@ mat-panel-title{
 } 
   
 .content-global{
-    height: 96vh;
-    margin-top: 2vh;
+  /*   height: 96vh;
+    margin-top: 2vh; */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .header{

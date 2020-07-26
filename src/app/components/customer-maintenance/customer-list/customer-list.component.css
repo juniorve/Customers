@@ -38,3 +38,7 @@ th{
     flex: 0 0 15% !important;
     width: 15% !important; 
 }
+
+.info-customer{
+    cursor: pointer;
+}
