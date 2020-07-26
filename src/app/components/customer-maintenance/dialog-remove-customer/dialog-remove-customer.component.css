@@ -1,26 +1,8 @@
-.content-buttons{
-    text-align: right;
-    margin-top: 8px;
-}
-
 .title{
-    font-weight: 500;
+    font-weight: 700;
     color: #2755a6;
-    font-size: 20px;
-}
- 
-/* ::ng-deep .my-custom-dialog-class {
-    mat-dialog-container {
-      padding: 10px 24px !important;
-    }
-} */
-
-.content-form{
-    margin-top: 8px;;
-}
-
-.form{
-    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 12px;
 }
 
 .dialog-close {
@@ -41,8 +23,22 @@
     color: #2755a6;
 }
 
+.title{
+    padding: 0;
+}
+
+.content-buttons{
+    text-align: right;
+}
+
+.global-content{
+    padding: 20px;
+}
+
+.global-content p {
+    width: 100%;
+}
+
 .dialog{
     position: relative;
 }
-
- 

@@ -20,3 +20,10 @@ button:focus {
     box-shadow: none!important;
 }
  
+
+.closeDialog{
+    background: white !important;
+    color: black !important;
+    border: 1px solid !important;
+    margin-right: 5px !important; 
+}

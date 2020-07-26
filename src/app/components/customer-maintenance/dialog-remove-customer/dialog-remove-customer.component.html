@@ -1,0 +1,28 @@
+<div [ngBusy]="{busy: busyService.busy, message: 'Eliminando cliente...', backdrop: true}"></div>
+<div mat-dialog-content class="dialog">
+  <div class="container">
+    <div class="row global-content">
+      <div class="col-sm-12 title">
+        Eliminar cliente
+      </div>
+      <p><strong>Seguro que quiere eliminar al cliente: </strong>{{data.name}} {{data.lastName}}</p>
+      <div class="col-sm-12 content-buttons">
+        <button type="button" class="closeDialog" mat-flat-button (click)="closeDialog()">
+        <mat-icon>close</mat-icon>  Cancelar
+        </button>
+        <button 
+        class="save" 
+        mat-flat-button 
+        color="warn"
+        type="submit"
+        (click)="removeCustomer()"
+        >
+          <mat-icon>delete</mat-icon> Confirmar 
+        </button>
+    </div>
+    </div>
+  </div>
+  <button mat-flat-button class="dialog-close" (click)="closeDialog()"  mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div> 

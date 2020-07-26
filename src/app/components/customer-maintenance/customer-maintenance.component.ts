@@ -1,3 +1,4 @@
+import { DialogRemoveCustomerComponent } from './dialog-remove-customer/dialog-remove-customer.component';
 import { DialogCustomerProjectionComponent } from './dialog-customer-projection/dialog-customer-projection.component';
 import { Customer } from './../../models/customer.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
@@ -92,13 +93,40 @@ export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
   }
 
   actionIcon(event) {
-    if (event) {
-      this.dialog.open(DialogCustomerProjectionComponent, {
-        data: event,
-        width: '50%',
-        disableClose: true
-      });
+    console.log(event);
+    switch (event.action) {
+      case 'showCustomer':
+        this.opendDialogShowCustomer(event.data);
+        break;
+      case 'removeCustomer':
+        this.openDialogRemoveCustomer(event.data);
+        break;
     }
+    if (event) {
+
+    }
+  }
+
+  opendDialogShowCustomer(customer: Customer) {
+    this.dialog.open(DialogCustomerProjectionComponent, {
+      data: customer,
+      width: '50%',
+      disableClose: true
+    });
+  }
+
+  openDialogRemoveCustomer(customer: Customer) {
+    const dialogRef = this.dialog.open(DialogRemoveCustomerComponent, {
+      data: customer,
+      width: '40%',
+      disableClose: true
+    });
+
+    dialogRef.afterClosed().subscribe(response => {
+      if (response) {
+        this.findCustomers();
+      }
+    });
   }
 
 }

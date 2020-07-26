@@ -16,6 +16,7 @@ import { DialogNewCustomerComponent } from './components/customer-maintenance/di
 import { CustomerListComponent } from './components/customer-maintenance/customer-list/customer-list.component';
 import { DialogCustomerProjectionComponent } from './components/customer-maintenance/dialog-customer-projection/dialog-customer-projection.component';
 import { CustomerService } from './services/customer.service';
+import { DialogRemoveCustomerComponent } from './components/customer-maintenance/dialog-remove-customer/dialog-remove-customer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +24,7 @@ import { CustomerService } from './services/customer.service';
     DialogNewCustomerComponent,
     CustomerListComponent,
     DialogCustomerProjectionComponent,
+    DialogRemoveCustomerComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -37,7 +39,8 @@ import { CustomerService } from './services/customer.service';
   ],
   entryComponents: [
     DialogNewCustomerComponent,
-    DialogCustomerProjectionComponent
+    DialogCustomerProjectionComponent,
+    DialogRemoveCustomerComponent
   ],
   providers: [appRoutingProviders,
     ApiService,

@@ -7,7 +7,7 @@ import { Customer } from '../../../models/customer.model';
 })
 export class CustomerListComponent implements OnInit {
   @Input() customerList: Customer[] = [];
-  @Output() actionIcon = new EventEmitter<string>();
+  @Output() actionIcon = new EventEmitter<object>();
   displayedColumns: string[] = ['name', 'lastName', 'age', 'birthDate', 'actions'];
   dataSource: Customer[];
   constructor() {
@@ -17,8 +17,11 @@ export class CustomerListComponent implements OnInit {
     this.dataSource = this.customerList;
   }
 
-  showCustomer(element) {
-    this.actionIcon.emit(element);
+  showCustomer(element, action) {
+    this.actionIcon.emit({
+      data: element,
+      action
+    });
   }
 
 }
