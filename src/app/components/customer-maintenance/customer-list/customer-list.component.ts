@@ -11,7 +11,6 @@ export class CustomerListComponent implements OnInit {
   displayedColumns: string[] = ['name', 'lastName', 'age', 'birthDate', 'actions'];
   dataSource: Customer[];
   constructor() {
-    console.log(this.customerList);
   }
 
   ngOnInit() {

@@ -44,6 +44,10 @@ export class CustomerService {
         );
     }
 
-
+    deleteCustomerById(customerId): Observable<any> {
+        return this.apiService.delete(`${this.apiService.customer}/customers/${customerId}.json`).pipe(
+            map(data => data)
+        );
+    }
 
 }

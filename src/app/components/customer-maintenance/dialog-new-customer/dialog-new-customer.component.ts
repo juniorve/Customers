@@ -24,7 +24,6 @@ export class DialogNewCustomerComponent implements OnInit, OnDestroy {
     private customerService: CustomerService,
     private busyService: BusyService
   ) {
-    console.log(data);
     this.form = this.fb.group({
       name: [null, Validators.required],
       lastName: [null, Validators.required],
@@ -46,7 +45,6 @@ export class DialogNewCustomerComponent implements OnInit, OnDestroy {
     this.busyService.busy = this.customerService.saveCustomer(this.form.getRawValue())
       .pipe(takeUntil(this.onDestroy$))
       .subscribe(response => {
-        console.log(response);
         if (response) {
           swal('Cliente registrado', 'Datos guardados correctamente', 'success').then(() => {
             this.closeDialog(true);

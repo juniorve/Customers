@@ -21,7 +21,6 @@ export class DialogCustomerProjectionComponent implements OnInit, OnDestroy {
     private customerService: CustomerService,
     private busyService: BusyService
   ) {
-    console.log(this.data);
   }
 
   ngOnInit() {
@@ -39,12 +38,10 @@ export class DialogCustomerProjectionComponent implements OnInit, OnDestroy {
       .subscribe(response => {
         if (response) {
           this.customer = response;
-          console.log(response);
           /* Según el INEI la esperanza de via de la población peruana es de 74 años por lo tanto la
-    proyección de la fecha de fallecimiento del cliente sera sumarle 74 años a su fecha de nacimiento. */
+             proyección de la fecha de fallecimiento del cliente sera sumarle 74 años a su fecha de nacimiento. */
           const birthDate = new Date(this.customer.birthDate);
           this.deathDate = moment(new Date(birthDate.setFullYear(birthDate.getFullYear() + 74))).format('DD/MM/YYYY');
-          console.log(this.deathDate);
         }
       });
   }

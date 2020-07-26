@@ -92,7 +92,6 @@ export class CustomerMaintenanceComponent implements OnInit, OnDestroy {
   }
 
   actionIcon(event) {
-    console.log(event);
     if (event) {
       this.dialog.open(DialogCustomerProjectionComponent, {
         data: event,
